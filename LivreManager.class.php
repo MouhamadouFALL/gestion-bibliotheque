@@ -11,5 +11,5 @@ class LivreManager{
     public function getLivres(){
         return $this->livres;
     }
-    
+
 }

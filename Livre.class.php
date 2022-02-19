@@ -7,8 +7,6 @@ class Livre {
     private $image;
     private $nbPages;
 
-    public static $livres; // collection des livres
-
     // constructeur
     public function __construct($id, $titre, $image, $nbPages)
     {
@@ -16,9 +14,6 @@ class Livre {
         $this->titre=$titre;
         $this->nbPages=$nbPages;
         $this->image=$image;
-
-        // ajouter chaque livre creer dans la collection des livres
-        self::$livres[] = $this;
     }
 
     public function getId() {return $this->id;}
