@@ -1,19 +1,9 @@
 <?php 
 
-require_once "Livre.class.php";
 require_once "LivreManager.class.php";
-// Creer quatre livres
-$livre1 = new Livre(1, "Algorithme selon H2PROG", "algo.png", 250);
-$livre2 = new Livre(2, "Virus Asiatique", "virus.png", 150);
-$livre3 = new Livre(3, "La France du 19ème", "france.png", 100);
-$livre4 = new Livre(4, "Le JavaScript client", "JS.png", 300);
 
-// l'utiliation de la classe LivreManager
 $livreManager = new LivreManager();
-$livreManager->ajouterLivre($livre1);
-$livreManager->ajouterLivre($livre2);
-$livreManager->ajouterLivre($livre3);
-$livreManager->ajouterLivre($livre4);
+$livreManager->chargementLivres();
 
 ob_start();
 
