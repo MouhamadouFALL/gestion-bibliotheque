@@ -15,6 +15,14 @@ class LivreManager extends Model{
         return $this->livres;
     }
 
+    public function getLivreById($id) {
+        for ($i=0; $i < count($this->livres); $i++) { 
+            if ($this->livres[$i]->getId() === $id) {
+                return $this->livres[$i];
+            }
+        }
+    }
+
     // Permet de recupérer les livres dans la base de données
     public function chargementLivres(){
         // Définir une requête
