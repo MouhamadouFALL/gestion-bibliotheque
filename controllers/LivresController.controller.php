@@ -61,6 +61,15 @@ class LivresController{
         else return ($random."_".$file['name']);
         
     }
+
+    public function supprimerLivre($id) {
+        $nomImage = $this->livreManager->getLivreById($id)->getImage();
+        unlink("public/images/".$nomImage); //permet de supprimer l'image dans le repertoire public
+
+        // supprimer le livre dans la base de données
+        $this->livreManager->supprimerLivreBD($id);
+        header('Location: '.URL."livres");
+    }
     
 }
 

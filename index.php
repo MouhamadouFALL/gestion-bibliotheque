@@ -33,7 +33,7 @@ else {
                 echo "Modification d'un livre";
             }
             elseif ($url[1] === "s") {
-                echo "<pre>Suppression d'un livre</pre>";
+                $livreController->supprimerLivre($url[2]);
             }
             else {
                 throw new Exception("La page n'existe pas.");
