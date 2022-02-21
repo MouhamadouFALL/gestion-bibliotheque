@@ -30,7 +30,8 @@ class LivresController{
         $file = $_FILES['image'];
         $repertoire = "public/images/";
         $nomImage = $this->ajouterImager($file, $repertoire); // charger ou upload de l'image
-        $this->livreManager->ajouterLivreBD();
+        $this->livreManager->ajouterLivreBD($_POST['titre'], $_POST['nbPages'], $nomImage);
+        header('Location: '. URL ."livres");
     }
 
 
