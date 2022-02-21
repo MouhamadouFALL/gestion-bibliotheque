@@ -27,7 +27,7 @@ else {
                 $livreController->ajouterLivre();
             }
             elseif ($url[1] === "va") {
-                echo "Livre bien ajouté";
+                $livreController->ajouterLivreValider();
             }
             elseif ($url[1] === "m") {
                 echo "Modification d'un livre";

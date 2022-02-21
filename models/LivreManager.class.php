@@ -37,6 +37,11 @@ class LivreManager extends Model{
             $this->ajouterLivre($l);
         }
     }
+
+    // Ajouter un livre à la base de données
+    public function ajouterLivreBD() {
+        
+    }
 }
 
 ?>
