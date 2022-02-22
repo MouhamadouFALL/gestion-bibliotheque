@@ -30,7 +30,10 @@ else {
                 $livreController->ajouterLivreValider();
             }
             elseif ($url[1] === "m") {
-                echo "Modification d'un livre";
+                $livreController->modifierLivre($url[2]);
+            }
+            elseif ($url[1] === "vm") {
+                $livreController->modifierLivreValider();
             }
             elseif ($url[1] === "s") {
                 $livreController->supprimerLivre($url[2]);

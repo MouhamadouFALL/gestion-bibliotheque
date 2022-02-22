@@ -34,6 +34,37 @@ class LivresController{
         header('Location: '. URL ."livres");
     }
 
+    public function supprimerLivre($id) {
+        $nomImage = $this->livreManager->getLivreById($id)->getImage();
+        unlink("public/images/".$nomImage); //permet de supprimer l'image dans le repertoire public
+
+        // supprimer le livre dans la base de données
+        $this->livreManager->supprimerLivreBD($id);
+        header('Location: '.URL."livres");
+    }
+
+    public function modifierLivre($id) {
+        $livre = $this->livreManager->getLivreById($id);
+        require_once "views/modifierLivre.view.php";
+    }
+
+    public function modifierLivreValider() {
+        $imageActuelle = $this->livreManager->getLivreById($_POST['identifiant'])->getImage();
+        $file = $_FILES['image'];
+
+        if ($file['size'] > 0) {
+            unlink("public/images".$imageActuelle);
+            $repertoire = "public/images/";
+            $nameImageToAdd = $this->ajouterImager($file, $repertoire);
+        }
+        else {
+            $nameImageToAdd = $imageActuelle;
+        }
+
+        $this->livreManager->modifierLivreBD($_POST['identifiant'], $_POST['titre'], $_POST['nbPages'], $nameImageToAdd);
+
+        header('Location: '.URL."livres");
+    }
 
     private function ajouterImager($file, $dir) {
         // vérifier si le nom du ficher est défini ou s'il est vide
@@ -60,15 +91,6 @@ class LivresController{
             throw new Exception("l'ajout d'image n'a pas fonctionné");
         else return ($random."_".$file['name']);
         
-    }
-
-    public function supprimerLivre($id) {
-        $nomImage = $this->livreManager->getLivreById($id)->getImage();
-        unlink("public/images/".$nomImage); //permet de supprimer l'image dans le repertoire public
-
-        // supprimer le livre dans la base de données
-        $this->livreManager->supprimerLivreBD($id);
-        header('Location: '.URL."livres");
     }
     
 }
