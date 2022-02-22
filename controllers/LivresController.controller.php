@@ -31,6 +31,12 @@ class LivresController{
         $repertoire = "public/images/";
         $nomImage = $this->ajouterImager($file, $repertoire); // charger ou upload de l'image
         $this->livreManager->ajouterLivreBD($_POST['titre'], $_POST['nbPages'], $nomImage);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Bien ajouté"
+        ];
+
         header('Location: '. URL ."livres");
     }
 
@@ -40,6 +46,12 @@ class LivresController{
 
         // supprimer le livre dans la base de données
         $this->livreManager->supprimerLivreBD($id);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Bien supprimé"
+        ];
+
         header('Location: '.URL."livres");
     }
 
@@ -62,6 +74,11 @@ class LivresController{
         }
 
         $this->livreManager->modifierLivreBD($_POST['identifiant'], $_POST['titre'], $_POST['nbPages'], $nameImageToAdd);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Bien modifié"
+        ];
 
         header('Location: '.URL."livres");
     }
