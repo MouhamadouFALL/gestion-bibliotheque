@@ -21,6 +21,8 @@ class LivreManager extends Model{
                 return $this->livres[$i];
             }
         }
+
+        throw new Exception("Le livre n'existe pas.");
     }
 
     // Permet de recupérer les livres dans la base de données
